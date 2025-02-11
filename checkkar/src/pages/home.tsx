@@ -1,88 +1,87 @@
-// import { useState, useEffect } from 'react';
-// import { auth, signInWithGoogle, logout } from '../firebase';
-// import { User } from 'firebase/auth';
-// import { searchMentors } from '../services/api';
-// import { SearchBox } from '../components/SearchBox';
-// import { ResultsList } from '../components/ResultsList';
+import { useState, useEffect } from 'react';
+import { auth, signInWithGoogle, logout } from '../firebase';
+import { User } from 'firebase/auth';
+import { searchMentors } from '../services/api';
+import { SearchBox } from '../components/SearchBox';
+import { ResultsList } from '../components/ResultList';
 
 
-// interface Mentor {
-//   name: string;
-//   type: string;
-//   category: string;
-// }
+interface Mentor {
+  name: string;
+  type: string;
+  category: string;
+}
 
 function Home() {
-//   const [user, setUser] = useState<User | null>(null);
-//   const [results, setResults] = useState<Mentor[]>([]);
-//   const [aiResponse, setAIResponse] = useState('');
-//   const [error, setError] = useState('');
-//   const [loading, setLoading] = useState(false);
-//   const [noResultsMessage, setNoResultsMessage] = useState('');
+  const [user, setUser] = useState<User | null>(null);
+  const [results, setResults] = useState<Mentor[]>([]);
+  const [aiResponse, setAIResponse] = useState('');
+  const [error, setError] = useState('');
+  const [loading, setLoading] = useState(false);
+  const [noResultsMessage, setNoResultsMessage] = useState('');
 
-//   useEffect(() => {
-//     const unsubscribe = auth.onAuthStateChanged((user) => {
-//       setUser(user);
-//     });
-//     return () => unsubscribe();
-//   }, []);
+  useEffect(() => {
+    const unsubscribe = auth.onAuthStateChanged((user) => {
+      setUser(user);
+    });
+    return () => unsubscribe();
+  }, []);
 
-//   const handleSearch = async (query: string) => {
-//     setLoading(true);
-//     setError('');
-//     setNoResultsMessage('');
-//     try {
-//       const response = await searchMentors(query);
-//       setResults(response.matches);
-//       if (response.matches.length === 0) {
-//         setNoResultsMessage(response.message || 'No results found');
-//       } else {
-//         setAIResponse(response.response);
-//       }
-//     } catch (error) {
-//       setError((error as any).response?.data?.error || 'An error occurred');
-//     } finally {
-//       setLoading(false);
-//     }
-//   };
+  const handleSearch = async (query: string) => {
+    setLoading(true);
+    setError('');
+    setNoResultsMessage('');
+    try {
+      const response = await searchMentors(query);
+      setResults(response.matches);
+      if (response.matches.length === 0) {
+        setNoResultsMessage(response.message || 'No results found');
+      } else {
+        setAIResponse(response.response);
+      }
+    } catch (error) {
+      setError((error as any).response?.data?.error || 'An error occurred');
+    } finally {
+      setLoading(false);
+    }
+  };
 
-//   const handleLogin = async () => {
-//     try {
-//       await signInWithGoogle();
-//     } catch (error) {
-//       setError('Failed to sign in');
-//     }
-//   };
+  const handleLogin = async () => {
+    try {
+      await signInWithGoogle();
+    } catch (error) {
+      setError('Failed to sign in');
+    }
+  };
 
-//   const handleLogout = async () => {
-//     try {
-//       await logout();
-//       setResults([]);
-//       setAIResponse('');
-//     } catch (error) {
-//       setError('Failed to sign out');
-//     }
-//   };
+  const handleLogout = async () => {
+    try {
+      await logout();
+      setResults([]);
+      setAIResponse('');
+    } catch (error) {
+      setError('Failed to sign out');
+    }
+  };
 
 
 
-//   if (!user) {
-//     return (
-//       <div className="min-h-screen flex items-center justify-center bg-gradient-to-r from-blue-500 to-purple-600">
-//         <button
-//           onClick={handleLogin}
-//           className="bg-white text-blue-500 px-6 py-3 rounded-lg hover:bg-gray-100 transition duration-300 ease-in-out transform hover:scale-105"
-//         >
-//           Sign in with Google
-//         </button>
-//       </div>
-//     );
-//   }
+  if (!user) {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-gradient-to-r from-blue-500 to-purple-600">
+        <button
+          onClick={handleLogin}
+          className="bg-white text-blue-500 px-6 py-3 rounded-lg hover:bg-gray-100 transition duration-300 ease-in-out transform hover:scale-105"
+        >
+          Sign in with Google
+        </button>
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen bg-gradient-to-r from-blue-500 to-purple-600 p-8">
-        <p> Hello from different world</p>
-      {/* <div className="max-w-3xl mx-auto bg-white rounded-lg shadow-lg p-8">
+      <div className="max-w-3xl mx-auto bg-white rounded-lg shadow-lg p-8">
         <div className="flex justify-between items-center mb-8">
           <button
             onClick={handleLogout}
@@ -117,7 +116,7 @@ function Home() {
         )}
 
         
-      </div> */}
+      </div>
     </div>
   );
 }
