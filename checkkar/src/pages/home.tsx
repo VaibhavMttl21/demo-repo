@@ -6,11 +6,11 @@ import { SearchBox } from '../components/SearchBox';
 // import { ResultsList } from '../components/ResultList';
 
 
-interface Mentor {
-  name: string;
-  type: string;
-  category: string;
-}
+// interface Mentor {
+//   name: string;
+//   type: string;
+//   category: string;
+// }
 
 function Home() {
   const [user, setUser] = useState<User | null>(null);
