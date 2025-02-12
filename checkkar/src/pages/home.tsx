@@ -110,7 +110,7 @@ function Home() {
 
         {aiResponse && (
           <div className="bg-white rounded-lg shadow-md p-6 mt-6 animate-fade-in">
-            <h2 className="text-xl font-semibold mb-4">AI Response</h2>
+            <h2 className="text-xl font-semibold mb-4">Recommended Mentor</h2>
             <p>{aiResponse}</p>
           </div>
         )}
