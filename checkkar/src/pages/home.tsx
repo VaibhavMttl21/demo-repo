@@ -14,7 +14,7 @@ interface Mentor {
 
 function Home() {
   const [user, setUser] = useState<User | null>(null);
-  const [results, setResults] = useState<Mentor[]>([]);
+  // const [results, setResults] = useState<Mentor[]>([]);
   const [aiResponse, setAIResponse] = useState('');
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
@@ -33,7 +33,7 @@ function Home() {
     setNoResultsMessage('');
     try {
       const response = await searchMentors(query);
-      setResults(response.matches);
+      // setResults(response.matches);
       if (response.matches.length === 0) {
         setNoResultsMessage(response.message || 'No results found');
       } else {
@@ -57,7 +57,7 @@ function Home() {
   const handleLogout = async () => {
     try {
       await logout();
-      setResults([]);
+      // setResults([]);
       setAIResponse('');
     } catch (error) {
       setError('Failed to sign out');
