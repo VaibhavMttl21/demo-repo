@@ -3,7 +3,7 @@ import { auth, signInWithGoogle, logout } from '../firebase';
 import { User } from 'firebase/auth';
 import { searchMentors } from '../services/api';
 import { SearchBox } from '../components/SearchBox';
-import { ResultsList } from '../components/ResultList';
+// import { ResultsList } from '../components/ResultList';
 
 
 interface Mentor {
@@ -106,7 +106,7 @@ function Home() {
           </div>
         )}
 
-        <ResultsList results={results} />
+{/*         <ResultsList results={results} /> */}
 
         {aiResponse && (
           <div className="bg-white rounded-lg shadow-md p-6 mt-6 animate-fade-in">
